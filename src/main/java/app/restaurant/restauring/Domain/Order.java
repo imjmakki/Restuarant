@@ -25,5 +25,7 @@ public class Order implements Serializable {
     private String ordName;
     private Integer Price;
     private String Image;
+
+    @Lob
     private String description;
 }
