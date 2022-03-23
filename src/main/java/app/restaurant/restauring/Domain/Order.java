@@ -3,9 +3,12 @@ package app.restaurant.restauring.Domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "orders")
@@ -15,7 +18,7 @@ import java.io.Serializable;
 public class Order implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -28,4 +31,12 @@ public class Order implements Serializable {
 
     @Lob
     private String description;
+
+    @Column(name = "create_at")
+    @CreationTimestamp
+    private Date ordCreate;
+
+    @Column(name = "update_at")
+    @UpdateTimestamp
+    private Date ordUpdate;
 }
