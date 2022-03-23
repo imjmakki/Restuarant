@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,9 +25,11 @@ public class Category implements Serializable {
     private String catName;
 
     @Column(name = "create_at")
+    @CreationTimestamp
     private Date catCreate;
 
     @Column(name = "update_at")
+    @UpdateTimestamp
     private Date catUpdate;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
