@@ -17,6 +17,11 @@ public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name="cat_id", nullable=false)
+    private Category category;
+
     private String ordName;
     private Integer Price;
     private String Image;
